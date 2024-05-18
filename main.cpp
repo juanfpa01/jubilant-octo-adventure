@@ -1,5 +1,5 @@
 #include<iostream>
-#include<conio.h>
+#include <windows.h>
 #include<stdio.h>
 #include<string>
 #include<vector>
@@ -42,7 +42,8 @@ using namespace std;
 void cargador(int cantProcesos)
 {
     ColaLineal procesos;
-
+    int valor_actual=0;
+    ColaLineal Temporal;
     for (int i = 0; i < cantProcesos; i++)
     {
         procesos.push(i);
@@ -50,9 +51,15 @@ void cargador(int cantProcesos)
     
    while (!procesos.cola_vacia())
    {
-        cout << procesos.pop() << " ";
-        procesos.pop();
+       valor_actual=procesos.pop();
+        cout << valor_actual << " ";
+       temporal.push(valor_actual);        
    }
+    while (!temporal.cola_vacia())
+   {
+      procesos.push(temporal.pop());       
+   }
+    
    cout << endl;
     
     
@@ -61,19 +68,22 @@ void cargador(int cantProcesos)
 void menu()
 {
     int op; //opcion 
-    int cantProcesos;
-
+    int cantProcesos=0;
+    bool salir=False;
+do
+    {
     cout << "Ingrese la cantidad de procesos: ";
     cin >> cantProcesos;
 
-    cout << "1 ------> Cargar procesos. \n";
-    cout << " ------> Ejecutar proceso. \n";
-    cout << " ------> Terminar proceso. \n";
-    cout << " ------> Listar cola de TERMINADOS \n";
-    cout << " ------> Listar cola de Trazas en EJECUCION \n";
-    cout << " ------> Listar cola de Trazas PENDIENTES \n";
-    cout << " ------> Mostrar Pila de CONTROL DE EJECUCION \n";
-    cout << " ------> Cancelar proceso. \n";
+    cout << " 1 ------> Cargar procesos. \n";
+    cout << " 2------> Ejecutar proceso. \n";
+    cout << " 3------> Terminar proceso. \n";
+    cout << " 4------> Listar cola de TERMINADOS \n";
+    cout << " 5------> Listar cola de Trazas en EJECUCION \n";
+    cout << " 6------> Listar cola de Trazas PENDIENTES \n";
+    cout << " 7------> Mostrar Pila de CONTROL DE EJECUCION \n";
+    cout << " 8------> Cancelar proceso. \n";
+    cout << " 9------> salir
     cout << "";
     cout << "Ingrese la opcion: ";
 
@@ -82,54 +92,65 @@ void menu()
     switch (op)
     {
     case 1:
-        
+        system("CLS");
+        cout << " 1 ------> Cargar procesos. \n";
         
         
         break;
     
     case 2:
-
+        system("CLS");
+        cout << " 2------> Ejecutar proceso. \n";
 
         break;
 
     case 3:
-
+        system("CLS");
+        cout << " 3------> Terminar proceso. \n";
 
         break;
 
     case 4:
-
+        system("CLS");
+        cout << " 4------> Listar cola de TERMINADOS \n";
 
         break;
 
     case 5:
-
+        system("CLS");
+        cout << " 5------> Listar cola de Trazas en EJECUCION \n";
 
         break;
 
     case 6:
-
+        system("CLS");
+        cout << " 6------> Listar cola de Trazas PENDIENTES \n";
 
         break;
 
     case 7:
-
+        system("CLS");
+        cout << " 7------> Mostrar Pila de CONTROL DE EJECUCION \n";
 
         break;
 
     case 8:
-
+        system("CLS");
+        cout << " 8------> Cancelar proceso. \n";
 
         break;
 
     case 9:
-
-
+        system("CLS");
+        cout << " 9------> salir
+        salir==True;
         break;
 
     default:
+        cout<<"valor invalido"<<endl;
         break;
     }
+    } while(salir==false)
 }
 
 
@@ -148,11 +169,12 @@ int main()
 
     cargador(3);
     cout << "mano porfavor compila \n";
+    system("CLS");
+    menu();
 
 
 
 
-
-
+return 69;
 
 }
